@@ -4,7 +4,7 @@ import axios from 'axios';
 import CoursesPage from './CoursesPage';
 import RecordPage from './RecordPage';
 
-const API = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+import API from '../api';
 const LANG_COLORS = { python:'#3b82f6', c:'#f59e0b', cpp:'#8b5cf6', java:'#ef4444' };
 const LANG_LABELS = { python:'Python', c:'C', cpp:'C++', java:'Java' };
 

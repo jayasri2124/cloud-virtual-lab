@@ -1,9 +1,27 @@
 services:
+  # ── BACKEND: FastAPI ──────────────────────────────────────────────────────────
   - type: web
-    name: cloud-lab-backend
-    env: python
-    buildCommand: pip install -r backend/requirements.txt
-    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    name: cloud-virtual-lab-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.0
+      - key: PORT
+        value: 10000
+
+  # ── FRONTEND: React Static Site ───────────────────────────────────────────────
+  - type: static
+    name: cloud-virtual-lab-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://cloud-virtual-lab-backend.onrender.com/api
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

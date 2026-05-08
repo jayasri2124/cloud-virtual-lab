@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext, useRef } from 'react';
 import { AuthContext } from '../App';
 import axios from 'axios';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
-const API = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
-const WS = 'ws://localhost:8000/ws/admin';
+
+import API from '../api';
+const WS = process.env.REACT_APP_WS_URL || 'ws://localhost:8000/ws/admin';
 
 const COLORS = ['#00d4ff','#7c3aed','#10b981','#f59e0b','#ef4444'];
 
