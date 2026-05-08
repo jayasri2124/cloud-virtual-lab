@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../App';
 import axios from 'axios';
 
-const API = 'http://localhost:8000/api';
+const API = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
 
 export default function WelcomePage() {
   const { setUser } = useContext(AuthContext);
